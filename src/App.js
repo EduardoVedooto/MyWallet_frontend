@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Signin from "./pages/signin/Signin";
+import Signin from "./pages/signin/index";
+import Signup from "./pages/signup";
 import GlobalStyles from "./styles/GlobalStyles";
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
       <GlobalStyles />
       <Switch>
         <Route path="/signin" exact component={Signin} />
+        <Route path="/signup" exact component={Signup} />
       </Switch>
     </Router>
   );

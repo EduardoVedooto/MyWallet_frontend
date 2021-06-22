@@ -1,19 +1,22 @@
-import { SigninContainer, Title, Form, Input, Button } from "./styles";
+import SigninContainer from "./style";
+import Form from "../../styles/Form";
+import Title from "../../styles/Title";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Validate from "../../utils/ValidateInputs";
 
 const Signin = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  console.log(validEmail);
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!validEmail.test(email) || password.length < 6)
-      return console.log("Campos inválidos");
-
+    const validation = Validate({ email }, "signin");
+    if (!validation.result) {
+      return console.log(validation.message);
+    }
 
     /* Not implemented yet */
 
@@ -27,10 +30,11 @@ const Signin = () => {
   return (
     <SigninContainer>
       <Title>MyWallet</Title>
+
       <Form onSubmit={handleSubmit}>
-        <Input type="text" placeholder="E-mail" onChange={handleChange} required />
-        <Input minLength="6" type="password" placeholder="Senha" onChange={handleChange} required />
-        <Button>Entrar</Button>
+        <input type="text" placeholder="E-mail" onChange={handleChange} required />
+        <input minLength="6" type="password" placeholder="Senha" onChange={handleChange} required />
+        <button>Entrar</button>
       </Form>
       <Link to="/signup">Primeira vez? Cadastre-se!</Link>
     </SigninContainer>
