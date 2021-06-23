@@ -19,7 +19,10 @@ const NewEntry = () => {
     const validation = Validate({ value, description }, "newEntry");
     if (!validation.result) return console.log(validation.message);
 
-    const promise = axios.post("http://localhost:4000/finances", { value, description }, { params: { type } });
+    const promise = axios.post("http://localhost:4000/finances",
+      { value: value.replace(",", "."), description },
+      { params: { type } }
+    );
     promise.then(() => history.push("/home"));
     promise.catch(e => console.error(e.response.data));
   }

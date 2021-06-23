@@ -9,10 +9,10 @@ const Signin = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   function handleSubmit(e) {
     e.preventDefault();
+    isNaN(password) // ONlY TO USE PASSWORD
     const validation = Validate({ email }, "signin");
     if (!validation.result) {
       return console.log(validation.message);
