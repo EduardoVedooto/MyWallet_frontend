@@ -1,25 +1,28 @@
 import { SignupContainer } from "./style";
 import Title from "../../styles/Title";
 import Form from "../../styles/Form";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import Validate from "../../utils/ValidateInputs";
+import axios from "axios";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
     const validation = Validate({ name, email, password, confirmPassword }, "signup");
     if (!validation.result) {
-      return console.log(validation.message);
+      return window.alert(validation.message);
     }
 
-    /* Not implemented yet */
-
+    const promise = axios.post("http://localhost:4000/users", { name, email, password, confirmPassword });
+    promise.then(() => history.push("/signin"));
+    promise.catch(e => window.alert(e.response.data.message));
   }
 
   function handleChange({ target }) {
