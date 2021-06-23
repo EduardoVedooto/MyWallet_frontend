@@ -1,10 +1,12 @@
 import { ButtonContainer } from "./style";
 import { BiPlusCircle, BiMinusCircle } from "react-icons/bi";
 import { IconContext } from "react-icons/lib";
+import { useHistory } from "react-router";
 
 const Button = ({ type }) => {
+  const history = useHistory();
   return (
-    <ButtonContainer>
+    <ButtonContainer onClick={() => history.push("/newentry", { type })}>
       <IconContext.Provider value={{ size: "1.8em" }}>
         {type === "income" ? <BiPlusCircle /> : <BiMinusCircle />}
       </IconContext.Provider>

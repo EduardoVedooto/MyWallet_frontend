@@ -1,4 +1,5 @@
-const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; //eslint-disable-line
+const validDecimal = /^(\d+(?:[\.\,]\d{1,2})?)$/; //eslint-disable-line
 
 const Validate = (data, from) => {
   if (from === "signup") {
@@ -32,6 +33,22 @@ const Validate = (data, from) => {
       return {
         result: false,
         message: "Email-inválido"
+      };
+    }
+  } else if (from === "newEntry") {
+    const { value, description } = data;
+    console.log(description, description.trim().length);
+    if (!validDecimal.test(value) || parseFloat(value.replace(",", ".")) === 0) {
+      return {
+        result: false,
+        message: "Valor inválido"
+      };
+    }
+
+    if (!description.trim().length) {
+      return {
+        result: false,
+        message: "Descrição não pode estar vazia"
       };
     }
   }

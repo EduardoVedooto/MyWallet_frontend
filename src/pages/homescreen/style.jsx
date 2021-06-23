@@ -6,7 +6,6 @@ const HomeScreenContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   padding: 2.5rem 2.4rem;
 `;
 
