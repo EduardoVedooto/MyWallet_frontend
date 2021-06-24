@@ -1,25 +1,30 @@
 import SigninContainer from "./style";
 import Form from "../../styles/Form";
 import Title from "../../styles/Title";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import Validate from "../../utils/ValidateInputs";
+import axios from "axios";
 
 const Signin = () => {
-
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
   function handleSubmit(e) {
     e.preventDefault();
-    isNaN(password) // ONlY TO USE PASSWORD
     const validation = Validate({ email }, "signin");
     if (!validation.result) {
       return console.log(validation.message);
     }
 
-    /* Not implemented yet */
-
+    const promise = axios.post("http://localhost:4000/signin", { email, password });
+    promise.then(({ data }) => {
+      sessionStorage.setItem("session", JSON.stringify(data));
+      history.push("/home");
+    });
+    promise.catch(e => console.error(e));
   }
 
   function handleChange({ target }) {

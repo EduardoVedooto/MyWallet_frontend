@@ -4,18 +4,19 @@ import { DashboardContainer, DashboardContent, Total, List, Item, Date, Descript
 import dayjs from "dayjs";
 import SumEntries from "../../utils/SumEntries";
 
-const Dashboard = () => {
+
+const Dashboard = ({ token }) => {
   const [entries, setEntries] = useState([]);
   const [total, setTotal] = useState({});
 
   useEffect(() => {
-    const promise = axios.get("http://localhost:4000/finances");
+    const promise = axios.get("http://localhost:4000/finances", { headers: { Authorization: `Bearer ${token}` } });
     promise.then(({ data }) => {
       setEntries(data);
       setTotal(SumEntries(data));
     });
     promise.catch(e => console.error(e));
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <DashboardContainer>

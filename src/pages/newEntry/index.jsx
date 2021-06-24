@@ -12,14 +12,16 @@ const NewEntry = () => {
   const history = useHistory()
   const [value, setValue] = useState("");
   const [description, setDescription] = useState("");
-  const type = history.location.state.type;
+  const { type, id } = history.location.state;
+
+  if (!type || !id) history.push("/signin");
 
   function handleSubmit(e) {
     e.preventDefault();
     const validation = Validate({ value, description }, "newEntry");
     if (!validation.result) return console.log(validation.message);
 
-    const promise = axios.post("http://localhost:4000/finances",
+    const promise = axios.post(`http://localhost:4000/finances/${id}`,
       { value: value.replace(",", "."), description },
       { params: { type } }
     );
