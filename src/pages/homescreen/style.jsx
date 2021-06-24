@@ -29,36 +29,6 @@ const HeaderContainer = styled.header`
 
 `;
 
-const FooterContainer = styled.footer`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin-top: 2rem;
-  gap: 2rem;
-`;
-
-const ButtonContainer = styled.button`
-  background-color: var(--color-secondary);
-  width: 100%;
-  border-radius: .5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 1rem;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 1.7rem;
-  font-weight: 700;
-  gap: 3rem;
-
-  span {
-    text-align: left;
-    user-select: none;
-  }
-`;
-
 const DashboardContainer = styled.section`
   width: 100%;
   background-color: #fff;
@@ -127,8 +97,6 @@ export {
   HomeScreenContainer,
   HeaderContainer,
   DashboardContainer,
-  FooterContainer,
-  ButtonContainer,
   DashboardContent,
   Total,
   List,

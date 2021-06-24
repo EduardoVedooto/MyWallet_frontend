@@ -1,12 +1,12 @@
 import Button from "./Button";
-import { FooterContainer } from "./style";
+import { Footer as FooterLayout } from "../../styles/Footer";
 
 const Footer = ({ id }) => {
   return (
-    <FooterContainer>
+    <FooterLayout>
       <Button type="income" id={id} />
       <Button type="outgo" id={id} />
-    </FooterContainer>
+    </FooterLayout>
   );
 }
 

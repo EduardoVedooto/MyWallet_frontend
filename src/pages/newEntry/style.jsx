@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Button as ButtonLayout } from "../../styles/Button";
+import { Footer as FooterLayout } from "../../styles/Footer";
 
 const NewEntryContainer = styled.main`
   min-height: 100vh;
@@ -18,28 +20,18 @@ const HeaderContainer = styled.header`
   user-select: none;
 `;
 
-const Button = styled.button`
-  background-color: var(--color-secondary);
-  width: 48%;
-  min-width: 7.2rem;
-  border-radius: .5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 1rem;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 1.7rem;
-  font-weight: 700;
-  gap: 5.3rem;
+const Button = styled(ButtonLayout)`
+  height: 12.86rem;
+  gap: 0;
   margin-top: auto;
-  margin-right: auto
-
-  span {
-    text-align: left;
-  }
+  justify-content: space-between;
+  background: ${props => props.type ? "0" : ""};
+  cursor: ${props => props.type ? "default" : "pointer"};
 `;
 
-export { NewEntryContainer, HeaderContainer, Button };
+const Footer = styled(FooterLayout)`
+  margin-top: auto;
+
+`;
+
+export { NewEntryContainer, HeaderContainer, Button, Footer };

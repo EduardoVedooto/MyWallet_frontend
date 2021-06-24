@@ -1,20 +1,23 @@
-import { NewEntryContainer, Button } from "./style";
+import { NewEntryContainer } from "./style";
 import Form from "../../styles/Form";
 import Header from "./Header";
 import { useState } from "react";
-import { BiChevronLeftCircle } from "react-icons/bi";
-import { IconContext } from "react-icons/lib";
 import { useHistory } from "react-router-dom";
 import Validate from "../../utils/ValidateInputs";
 import axios from "axios";
+import Footer from "./Footer";
 
 const NewEntry = () => {
   const history = useHistory()
   const [value, setValue] = useState("");
   const [description, setDescription] = useState("");
-  const { type, id } = history.location.state;
+  const state = history.location?.state;
 
-  if (!type || !id) history.push("/signin");
+  if (!state) {
+    history.push("/signin")
+    return null;
+  };
+  const { type, id } = state;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -43,12 +46,9 @@ const NewEntry = () => {
         <input placeholder="Descrição" required onChange={handleChange} />
         <button>Salvar</button>
       </Form>
-      <Button onClick={() => history.goBack()}>
-        <IconContext.Provider value={{ size: "1.8em" }}>
-          <BiChevronLeftCircle />
-        </IconContext.Provider>
-        <span>Voltar</span>
-      </Button>
+
+      <Footer />
+
     </NewEntryContainer>
   );
 }

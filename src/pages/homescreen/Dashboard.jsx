@@ -21,10 +21,10 @@ const Dashboard = ({ token }) => {
       console.error(e.response);
       if (e.response.status === 401) {
         window.alert("Sessão expirada.\nPor favor, faça login novamente");
-        return history.push("/signin");
+        history.push("/signin");
       } else {
         window.alert("Erro interno do servidor. Sua página será recarregada");
-        return window.location.reload();
+        window.location.reload();
       }
     });
   }, []); // eslint-disable-line

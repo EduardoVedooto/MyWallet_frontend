@@ -7,9 +7,13 @@ import { useHistory } from "react-router-dom";
 const HomeScreen = () => {
   const history = useHistory();
   const session = JSON.parse(sessionStorage.getItem('session'));
+
+
+
   if (!session) {
     window.alert("Sessão expirada. Por favor, faça login novamente");
-    return history.push("/signin");
+    history.push("/signin");
+    return null;
   }
   return (
     <HomeScreenContainer>

@@ -1,4 +1,4 @@
-import { ButtonContainer } from "./style";
+import { Button as ButtonContainer } from "../../styles/Button";
 import { BiPlusCircle, BiMinusCircle } from "react-icons/bi";
 import { IconContext } from "react-icons/lib";
 import { useHistory } from "react-router";
