@@ -22,7 +22,13 @@ const Signup = () => {
 
     const promise = axios.post("http://localhost:4000/users", { name, email, password, confirmPassword });
     promise.then(() => history.push("/signin"));
-    promise.catch(e => window.alert(e.response.data.message));
+    promise.catch(e => {
+      if (!e.response) {
+        window.alert("Sem conexão com o servidor");
+        return window.location.reload();
+      }
+      window.alert(e.response.data.message)
+    });
   }
 
   function handleChange({ target }) {

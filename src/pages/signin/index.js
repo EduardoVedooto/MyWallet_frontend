@@ -25,6 +25,10 @@ const Signin = () => {
       history.push("/home");
     });
     promise.catch(e => {
+      if (!e.response) {
+        window.alert("Sem conexão com o servidor");
+        return window.location.reload();
+      }
       console.error(e.response.data);
       window.alert(e.response.data);
     });
