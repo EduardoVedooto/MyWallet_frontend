@@ -24,7 +24,10 @@ const Signin = () => {
       sessionStorage.setItem("session", JSON.stringify(data));
       history.push("/home");
     });
-    promise.catch(e => console.error(e));
+    promise.catch(e => {
+      console.error(e.response.data);
+      window.alert(e.response.data);
+    });
   }
 
   function handleChange({ target }) {

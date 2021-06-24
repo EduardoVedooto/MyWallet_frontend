@@ -13,7 +13,7 @@ const HomeScreen = () => {
   }
   return (
     <HomeScreenContainer>
-      <Header name={session.user.name} />
+      <Header user={session.user} />
       <Dashboard token={session.token} />
       <Footer id={session.user.id} />
     </HomeScreenContainer>

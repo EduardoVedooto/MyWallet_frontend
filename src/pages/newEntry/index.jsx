@@ -19,7 +19,7 @@ const NewEntry = () => {
   function handleSubmit(e) {
     e.preventDefault();
     const validation = Validate({ value, description }, "newEntry");
-    if (!validation.result) return console.log(validation.message);
+    if (!validation.result) return window.alert(validation.message);
 
     const promise = axios.post(`http://localhost:4000/finances/${id}`,
       { value: value.replace(",", "."), description },

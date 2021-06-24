@@ -37,7 +37,6 @@ const Validate = (data, from) => {
     }
   } else if (from === "newEntry") {
     const { value, description } = data;
-    console.log(description, description.trim().length);
     if (!validDecimal.test(value) || parseFloat(value.replace(",", ".")) === 0) {
       return {
         result: false,

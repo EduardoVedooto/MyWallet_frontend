@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import { DashboardContainer, DashboardContent, Total, List, Item, Date, Description, Value } from "./style";
 import dayjs from "dayjs";
 import SumEntries from "../../utils/SumEntries";
+import { useHistory } from "react-router-dom";
 
 
 const Dashboard = ({ token }) => {
   const [entries, setEntries] = useState([]);
   const [total, setTotal] = useState({});
+  const history = useHistory();
 
   useEffect(() => {
     const promise = axios.get("http://localhost:4000/finances", { headers: { Authorization: `Bearer ${token}` } });
@@ -15,7 +17,16 @@ const Dashboard = ({ token }) => {
       setEntries(data);
       setTotal(SumEntries(data));
     });
-    promise.catch(e => console.error(e));
+    promise.catch(e => {
+      console.error(e.response);
+      if (e.response.status === 401) {
+        window.alert("Sessão expirada.\nPor favor, faça login novamente");
+        return history.push("/signin");
+      } else {
+        window.alert("Erro interno do servidor. Sua página será recarregada");
+        return window.location.reload();
+      }
+    });
   }, []); // eslint-disable-line
 
   return (
