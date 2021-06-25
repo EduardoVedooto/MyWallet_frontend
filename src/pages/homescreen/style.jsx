@@ -29,6 +29,10 @@ const HeaderContainer = styled.header`
 
 `;
 
+const LoaderContainer = styled.div`
+  margin: auto;
+`;
+
 const DashboardContainer = styled.section`
   width: 100%;
   background-color: #fff;
@@ -97,6 +101,7 @@ export {
   HomeScreenContainer,
   HeaderContainer,
   DashboardContainer,
+  LoaderContainer,
   DashboardContent,
   Total,
   List,

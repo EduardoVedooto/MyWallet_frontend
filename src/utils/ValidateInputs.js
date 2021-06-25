@@ -32,7 +32,7 @@ const Validate = (data, from) => {
     if (!validEmail.test(data.email)) {
       return {
         result: false,
-        message: "Email-inválido"
+        message: "E-mail inválido"
       };
     }
   } else if (from === "newEntry") {

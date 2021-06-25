@@ -5,32 +5,45 @@ import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import Validate from "../../utils/ValidateInputs";
 import axios from "axios";
+import Loader from "react-loader-spinner";
+import ModalComponent from "../../components/ModalComponent";
 
 const Signin = () => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isWaitingServer, setWaitingServer] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isModalOpen, setModalOpen] = useState(false);
 
 
   function handleSubmit(e) {
     e.preventDefault();
+    setWaitingServer(true);
     const validation = Validate({ email }, "signin");
     if (!validation.result) {
-      return console.log(validation.message);
+      setWaitingServer(false);
+      setErrorMessage(validation.message);
+      setModalOpen(true);
+      return;
     }
 
     const promise = axios.post("http://localhost:4000/signin", { email, password });
     promise.then(({ data }) => {
       sessionStorage.setItem("session", JSON.stringify(data));
       history.push("/home");
+      setWaitingServer(false);
     });
     promise.catch(e => {
+      setWaitingServer(false);
       if (!e.response) {
-        window.alert("Sem conexão com o servidor");
-        return window.location.reload();
+        setErrorMessage("Servidor fora do ar.");
+        setModalOpen(true);
+        return;
       }
       console.error(e.response.data);
-      window.alert(e.response.data);
+      setErrorMessage(e.response.data);
+      setModalOpen(true);
     });
   }
 
@@ -39,14 +52,28 @@ const Signin = () => {
     else setPassword(target.value);
   }
 
+  function CloseModal() {
+    setModalOpen(false);
+  }
+
   return (
     <SigninContainer>
       <Title>MyWallet</Title>
 
+      <ModalComponent display={isModalOpen} close={CloseModal} message={errorMessage} />
+
       <Form onSubmit={handleSubmit}>
         <input type="text" placeholder="E-mail" onChange={handleChange} required />
         <input minLength="6" type="password" placeholder="Senha" onChange={handleChange} required />
-        <button>Entrar</button>
+        <button>{isWaitingServer ?
+          <Loader
+            type="ThreeDots"
+            color="#fff"
+            height={20}
+            width={75}
+          /> :
+          "Entrar"}
+        </button>
       </Form>
       <Link to="/signup">Primeira vez? Cadastre-se!</Link>
     </SigninContainer>
