@@ -35,7 +35,7 @@ const NewEntry = () => {
       return;
     };
 
-    const promise = axios.post(`http://localhost:4000/finances/${id}`,
+    const promise = axios.post(`https://my-wallet-bootcamp.herokuapp.com/finances/${id}`,
       { value: value.replace(",", "."), description },
       { params: { type } }
     );

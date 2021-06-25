@@ -11,7 +11,7 @@ const ModalComponent = (props) => {
       "display": "flex",
     },
     content: {
-      "border-radius": ".5rem",
+      "borderRadius": ".5rem",
       "height": "20rem",
       "width": "60%",
       "margin": "auto",

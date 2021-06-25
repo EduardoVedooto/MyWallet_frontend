@@ -15,7 +15,7 @@ const Dashboard = ({ token }) => {
   useEffect(() => GetEntries(), []); // eslint-disable-line
 
   const GetEntries = () => {
-    const promise = axios.get("http://localhost:4000/finances", { headers: { Authorization: `Bearer ${token}` } });
+    const promise = axios.get("https://my-wallet-bootcamp.herokuapp.com/finances", { headers: { Authorization: `Bearer ${token}` } });
     promise.then(({ data }) => {
       setEntries(data);
       setWaitingServer(false);

@@ -11,7 +11,7 @@ const Header = ({ user }) => {
 
   function logout() {
     if (window.confirm("Encerrar sessões?")) {
-      axios.delete(`http://localhost:4000/logout/${id}`)
+      axios.delete(`https://my-wallet-bootcamp.herokuapp.com/logout/${id}`)
         .then(() => {
           history.push("/signin");
           sessionStorage.removeItem("session");

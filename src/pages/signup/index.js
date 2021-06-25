@@ -29,7 +29,7 @@ const Signup = () => {
       return;
     }
 
-    const promise = axios.post("http://localhost:4000/users", { name, email, password, confirmPassword });
+    const promise = axios.post("https://my-wallet-bootcamp.herokuapp.com/users", { name, email, password, confirmPassword });
     promise.then(() => {
       setWaitingServer(false);
       history.push("/signin")
