@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { Footer as FooterLayout } from "../../styles/Footer";
-import { Button as ButtonLayout } from "../../styles/Button";
-import Title from "../../styles/Title";
+import styled from 'styled-components';
+import { Footer as FooterLayout } from '../../styles/Footer';
+import { Button as ButtonLayout } from '../../styles/Button';
+import Title from '../../styles/Title';
 
 const LandingComponent = styled.main`
   background-color: var(--color-primary);
@@ -38,4 +38,6 @@ const Button = styled(ButtonLayout)`
   font-size: 2.6rem;
 `;
 
-export { LandingComponent, Footer, Button, TitleModified, SubTitle };
+export {
+  LandingComponent, Footer, Button, TitleModified, SubTitle,
+};

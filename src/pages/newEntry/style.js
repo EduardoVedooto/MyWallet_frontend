@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Button as ButtonLayout } from "../../styles/Button";
-import { Footer as FooterLayout } from "../../styles/Footer";
+import styled from 'styled-components';
+import { Button as ButtonLayout } from '../../styles/Button';
+import { Footer as FooterLayout } from '../../styles/Footer';
 
 const NewEntryContainer = styled.main`
   min-height: 100vh;
@@ -25,8 +25,8 @@ const Button = styled(ButtonLayout)`
   gap: 0;
   margin-top: auto;
   justify-content: space-between;
-  background: ${props => props.type ? "0" : ""};
-  cursor: ${props => props.type ? "default" : "pointer"};
+  background: ${(props) => (props.type ? '0' : '')};
+  cursor: ${(props) => (props.type ? 'default' : 'pointer')};
 `;
 
 const Footer = styled(FooterLayout)`
@@ -34,4 +34,6 @@ const Footer = styled(FooterLayout)`
 
 `;
 
-export { NewEntryContainer, HeaderContainer, Button, Footer };
+export {
+  NewEntryContainer, HeaderContainer, Button, Footer,
+};

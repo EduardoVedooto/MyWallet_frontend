@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const HomeScreenContainer = styled.main`
   min-height: 100vh;
@@ -93,7 +93,7 @@ const Description = styled.span`
 `;
 
 const Value = styled.span`
-  color: ${props => props.type === "income" ? "#03AC00" : "#C70000"};
+  color: ${(props) => (props.type === 'income' ? '#03AC00' : '#C70000')};
   margin-left: auto;
 `;
 
@@ -108,5 +108,5 @@ export {
   Item,
   Date,
   Description,
-  Value
+  Value,
 };

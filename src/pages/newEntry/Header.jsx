@@ -1,10 +1,9 @@
-import { HeaderContainer } from "./style";
+import { HeaderContainer } from './style';
 
 const Header = ({ type }) => (
   <HeaderContainer>
-    Nova {type === "income" ? "entrada" : "saída"}
+    Nova {type === 'income' ? 'entrada' : 'saída'}
   </HeaderContainer>
 );
-
 
 export default Header;
