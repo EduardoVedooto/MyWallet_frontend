@@ -2,9 +2,9 @@
 
 A simple to use app to manage all your incomes and expenses through a minimalist interface.
 
-<img style="height:40em;width:20em" src="./src/assets/HomePage.png" />
-<img style="height:40em;width:20em" src="./src/assets/LandingPage.png" />
-<img style="height:40em;width:20em" src="./src/assets/Presentation.gif" />
+<img style="height:20em;width:10em" src="./src/assets/HomePage.png" />
+<img style="height:20em;width:10em" src="./src/assets/LandingPage.png" />
+<img style="height:20em;width:10em" src="./src/assets/Presentation.gif" />
 
 Try it out now [here](https://my-wallet-bootcamp.vercel.app/ "My Wallet App")
 
